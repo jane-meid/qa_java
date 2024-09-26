@@ -1,3 +1,4 @@
+import com.example.Cat;
 import com.example.Feline;
 import org.junit.Assert;
 import org.junit.Test;
@@ -15,15 +16,15 @@ import static org.mockito.Mockito.*;
 public class FelineTest {
 
     @Mock
-    Feline MockFeline;
+    Feline mockFeline;
 
     @InjectMocks
     private Feline feline;
 
     @Test
     public void eatMeatTest() throws Exception {
-        Mockito.when(MockFeline.eatMeat()).thenReturn(List.of("Животные", "Птицы", "Рыба"));
-        Assert.assertEquals(feline.eatMeat(), MockFeline.eatMeat());
+        Mockito.when(mockFeline.eatMeat()).thenReturn(List.of("Животные", "Птицы", "Рыба"));
+        Assert.assertEquals(feline.eatMeat(), mockFeline.eatMeat());
     }
 
 
@@ -40,19 +41,17 @@ public class FelineTest {
     @Test
     public void getKittensTest() {
 
-        Mockito.when(MockFeline.getKittens()).thenReturn(3);
+        Mockito.when(mockFeline.getKittens()).thenReturn(1);
 
-        int result = MockFeline.getKittens();
-        Assert.assertEquals(3, result);
+        int result = mockFeline.getKittens();
+        Assert.assertEquals(1, result);
 
-        Mockito.verify(MockFeline, times(1)).getKittens();
+        Mockito.verify(mockFeline, times(1)).getKittens();
     }
 
     @Test
     public void testGetKittens() {
-
-        Mockito.when(MockFeline.getKittens()).thenReturn(1);
-
-        Assert.assertEquals(feline.getKittens(), MockFeline.getKittens());
+        Feline feline = new Feline();
+        Assert.assertEquals(1, feline.getKittens());
     }
 }

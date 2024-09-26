@@ -32,11 +32,11 @@ public class CatTest {
 
         Cat cat = new Cat(feline);
 
+        List<String> expectedFood = List.of("Хищник");
 
-        Mockito.when(feline.eatMeat()).thenReturn(List.of("Хищник"));
+        Mockito.when(feline.eatMeat()).thenReturn(expectedFood);
 
-
-        Assert.assertEquals(List.of("Хищник"), cat.getFood());
+        Assert.assertEquals(expectedFood, cat.getFood());
 
         Mockito.verify(feline, Mockito.times(1)).eatMeat();
     }

@@ -44,15 +44,10 @@ public class LionTest {
     }
 
 
-    @Test (expected = Exception.class)
-    public void invalidSexTest() throws Exception {
-        try {
-
-            new Lion("Недопустимый пол", predator);
-        } catch (Exception exp) {
-
-            Assert.assertEquals("Используйте допустимые значения пола животного - самец или самка", exp.getMessage());
-            throw exp;
-        }
+    @Test
+    public void invalidSexTest() {
+        Exception exception = Assert.assertThrows(Exception.class, () -> new Lion("Недопустимый пол", predator));
+        Assert.assertEquals("Используйте допустимые значения пола животного - самец или самка", exception.getMessage());
     }
+    //Не уверена, что правильно исправила
 }

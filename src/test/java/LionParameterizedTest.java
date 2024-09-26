@@ -35,14 +35,8 @@ public class LionParameterizedTest {
     public void doesHaveManeTest() throws Exception {
         Lion lion = new Lion(sex, predator);
 
-        Lion mockedLion = Mockito.mock(Lion.class);
-        if ("Самец".equals(sex)) {
-            Mockito.when(mockedLion.doesHaveMane()).thenReturn(true);
-        } else if ("Самка".equals(sex)) {
-            Mockito.when(mockedLion.doesHaveMane()).thenReturn(false);
-        }
-
-        Assert.assertEquals(lion.doesHaveMane(), mockedLion.doesHaveMane());
+        boolean expectedResult = "Самец".equals(sex);
+        Assert.assertEquals(expectedResult, lion.doesHaveMane());
     }
 
 }
